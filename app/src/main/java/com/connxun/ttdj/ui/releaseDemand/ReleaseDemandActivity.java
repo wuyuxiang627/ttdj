@@ -32,6 +32,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+
 import butterknife.OnClick;
 import okhttp3.OkHttpClient;
 
