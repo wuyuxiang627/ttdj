@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/li_noauth"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/mobile"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rect_blue_stroke_corner"
+            android:hint="@string/please_mobile"
+            android:padding="5dp"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/setting_password"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/et_set_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rect_blue_stroke_corner"
+            android:hint="@string/setting_password"
+            android:padding="5dp"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/et_commit_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rect_blue_stroke_corner"
+            android:hint="@string/confirm_password"
+            android:padding="5dp"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/captch_text"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/et_captchacode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/shape_rect_blue_stroke_corner"
+            android:hint="@string/please_captch"
+            android:padding="5dp"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/getcaptcha"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="3"
+            android:background="@drawable/btn_blue_shape_no_solid"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/get_captch"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/sp_16"/>
+    </LinearLayout>
+</LinearLayout>

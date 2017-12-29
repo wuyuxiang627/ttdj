@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+    <!-- 使用NoActionBar Theme-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/app_color</item>
+        <!-- 声明为透明状态栏 -->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!-- 标题栏样式 -->
+    <style name="title_style">
+        <item name="android:id">@id/app_title_id</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <!-- login-register样式 -->
+    <style name="login_style">
+        <item name="android:id">@id/app_title_id</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <!-- 一般的功能列表-->
+    <style name="item_style_with_foreg">
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_height">@dimen/item_height</item>
+        <!--<item name="android:background">@drawable/view_defulte_color</item>-->
+        <item name="android:background">@drawable/shape_rect_downline</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <!-- 一般的功能列表-->
+    <style name="item_style_noforend">
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_height">@dimen/item_height</item>
+        <item name="android:background">@drawable/view_defulte_color</item>
+    </style>
+</resources>

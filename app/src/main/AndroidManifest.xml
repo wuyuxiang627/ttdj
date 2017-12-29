@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.connxun.ttdj">
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <!--用于访问wifi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <!--用于获取wifi的获取权限-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 高德aMap-->
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+
+    <application
+        android:name="com.connxun.ttdj.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 高德定位 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="8d9384849e57f16efd0794310b6b8c3f" />
+
+        <!-- 高德地图定位 -->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <!-- 知乎图片选择 -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.connxun.ttdj.app.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public"></meta-data>
+        </provider>
+
+        <activity
+            android:name="com.connxun.ttdj.ui.splash.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.connxun.ttdj.ui.main.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- Bugly升级SDK配置开始  -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:theme="@android:style/Theme.Translucent"/>
+        <activity
+            android:name="com.zaaach.citypicker.CityPickerActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name="com.connxun.ttdj.ui.login.LoginActivity" />
+
+        <activity android:name="com.connxun.ttdj.ui.register.RegisterActivity" />
+
+        <activity android:name="com.connxun.ttdj.ui.center.AboutUsActivity"/>
+
+        <activity android:name="com.connxun.ttdj.ui.center.HelpAndFeedbackActivity"/>
+
+        <activity android:name="com.connxun.ttdj.ui.center.SettingActivity"/>
+        <!--<activity-->
+        <!--android:name=".ui.classdetail.ClassDetailActivity"-->
+        <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
+        <!--android:screenOrientation="portrait" />-->
+        <!--<activity-->
+        <!--android:name=".ui.filepreview.FilePreviewActivity"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:windowSoftInputMode="stateHidden|adjustResize"/>-->
+        <!--<activity android:name=".ui.base.WebActivity"/>-->
+
+        <!--<activity android:name=".ui.home.HomeSearchActivity"/>-->
+        <!--<activity android:name=".ui.regist.RegistActivity"/>-->
+        <!--<activity android:name=".ui.web.WebviewActivity"/>-->
+        <!--<activity android:name=".ui.download.DownloadAllActivity"/>-->
+        <!--<activity android:name=".ui.home.HomeCFActivity"/>-->
+        <!--<activity android:name=".ui.home.HomeHot_New_SpcActivity"/>-->
+        <!--<activity android:name=".ui.home.ClassListActivity"/>-->
+        <!--<activity android:name=".ui.home.HomeBroseHistoryActivity"/>-->
+
+        <!--<activity-->
+        <!--android:name="com.tencent.bugly.beta.ui.BetaActivity"-->
+        <!--android:configChanges="keyboardHidden|orientation|screenSize|locale"-->
+        <!--android:theme="@android:style/Theme.Translucent"/>-->
+
+        <!--<provider-->
+        <!--android:name="android.support.v4.content.FileProvider"-->
+        <!--android:authorities=".fileProvider"-->
+        <!--android:exported="false"-->
+        <!--android:grantUriPermissions="true">-->
+        <!--<meta-data-->
+        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--android:resource="@xml/provider_paths"/>-->
+        <!--</provider>-->
+
+        <!--<activity android:name=".ui.home.BannerDetailsActivity"/>-->
+        <!--<activity android:name=".ui.login.UpdatePasswordActivity"/>-->
+
+    </application>
+
+</manifest>

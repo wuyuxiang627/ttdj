@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">天天低价</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="type_title">type_title</string>
+    <string name="type_content">type_content</string>
+    <string name="type_listview">type_listview</string>
+    <string name="type_layout">type_layout</string>
+    <string name="type_webview">type_webview</string>
+
+    
+    <string name="developing">工程师正在拼命开发中,\n敬请期待……</string>
+    <string name="loading">加载中…</string>
+    <string name="error">Error</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="grant_permission">请先授予应用相关权限</string>
+    <string name="login_account_hint">请输入账号</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="copyright">Copyright © 2017 XX</string>
+    <string name="title_detail">详情</string>
+    <string name="mobile">手机号</string>
+    <string name="password_text">密码</string>
+    <string name="login_text">登录</string>
+    <string name="forget_pwd">忘记密码?</string>
+    <string name="captch_text">验证码</string>
+    <string name="please_captch">请输入验证码</string>
+    <string name="get_captch">获取验证码</string>
+    <string name="please_mobile">请输入手机号</string>
+    <string name="setting_password">设置密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="message">消息</string>
+
+    <!--名片发布-->
+    <string name="publish_name">名称</string>
+    <string name="publish_card_name">发布名片名称</string>
+    <string name="constant_price">固定价格</string>
+    <string name="scope_price">区间价格</string>
+    <string name="discuss_price">具体商定</string>
+    <string name="publish_card">发布名片</string>
+    <string name="publish">发布</string>
+    <string name="go_certification">进一步实名认证</string>
+    <string name="read_provision">我已经阅读并同意《乐挑促销》服务条款</string>
+
+    <!-- 个人中心 -->
+    <string name="invite_friends">邀请好友</string>
+    <string name="send_card">发送名片</string>
+    <string name="certification">实名认证</string>
+    <string name="store_order">商家订单</string>
+
+    <string name="my_order">我的订单</string>
+    <string name="my_want">我的需求</string>
+    <string name="my_card">我的名片</string>
+    <string name="my_collection">我的收藏</string>
+    <string name="my_trace">我的足迹</string>
+
+    <string name="help_feedback">帮助与反馈</string>
+    <string name="setting">设置</string>
+    <string name="about_us">关于我们</string>
+
+
+    <!-- 高德定位 -->
+    <string name="select_city">选择城市</string>
+    <string name="hot_city">热门城市</string>
+    <string name="located_city">定位城市</string>
+    <string name="hint_search_box">请输入城市名或拼音</string>
+    <string name="nothing_found">没有搜索结果~</string>
+    <string name="locating">正在定位…</string>
+    <string name="located_failed">定位失败</string>
+
+    <!--店铺-->
+    <string name="name">姓名</string>
+    <string name="volume">成交量</string>
+    <string name="evaluate">评价</string>
+
+    <!--商家竞标-->
+    <string name="want_name">需求名称:</string>
+    <string name="want_classify">需求分类:</string>
+    <string name="offer">报价:</string>
+    <string name="browse">浏览:</string>
+
+    <!-- 表单验证 -->
+    <string name="emptyPhone">手机号码不能为空</string>
+    <string name="emptyPassword">密码不能少于6位</string>
+    <string name="emptyPasswordAgain">确认密码不能为空</string>
+    <string name="emptyCaptcha">验证码不能为空</string>
+
+    <string name="emptyMame">姓名不能为空</string>
+    <string name="emptyWantName">需求名称不能为空</string>
+    <string name="emptyWantDescript">需求详细描述不能为空</string>
+    <string name="emptyCert">证件号码不能为空</string>
+    <string name="errorCert">证件号码格式不正确</string>
+
+    <!-- Recyclerview -->
+    <string name="empty_data">点击或上拉加载更多</string>
+    <string name="more_data">更多加载中……</string>
+    <string name="nomore_data">(*￣ω￣) 没有更多了</string>
+    <string name="error_data">网络错误,点击重试</string>
+    <string name="error_gif">x or y bound size should be at least %1$dpx and file size should be no more than %2$sM</string>
+
+</resources>

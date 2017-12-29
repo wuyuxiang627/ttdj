@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defult_bg"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:contentScrim="?attr/colorPrimary"
+            app:collapsedTitleGravity="center"
+            app:expandedTitleMarginEnd="0dp"
+            app:expandedTitleMarginStart="0dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/center_beijingtu"
+                    android:scaleType="fitXY"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ci_user_pic"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/center_touxiang" />
+
+                    <TextView
+                        android:id="@+id/tv_nikeName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="昵称"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_16" />
+
+                    <LinearLayout
+                        android:id="@+id/li_nologin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_login"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="登录"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp_16" />
+
+                        <TextView
+                            android:id="@+id/tv_reg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="注册"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp_16" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:layout_collapseMode="parallax">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:layout_gravity="top"-->
+                    <!--android:background="@mipmap/center_beijingtu">-->
+
+                    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                        <!--android:id="@+id/ci_user_pic"-->
+                        <!--android:layout_width="70dp"-->
+                        <!--android:layout_height="70dp"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:layout_marginTop="20dp"-->
+                        <!--android:layout_marginBottom="10dp"-->
+                        <!--android:scaleType="centerCrop"-->
+                        <!--android:src="@mipmap/center_touxiang" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_nikeName"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:text="昵称"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="@dimen/sp_16" />-->
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/li_nologin"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_horizontal">-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_login"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginRight="10dp"-->
+                            <!--android:text="登录"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:textSize="@dimen/sp_16" />-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_reg"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="10dp"-->
+                            <!--android:text="注册"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:textSize="@dimen/sp_16" />-->
+                    <!--</LinearLayout>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<com.connxun.ttdj.widget.waveview.WaveView-->
+                    <!--android:id="@+id/wave_view"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:layout_gravity="bottom" />-->
+
+            <!--</FrameLayout>-->
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:title=""
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin">
+                <!--
+                左部返回      app:navigationIcon="@mipmap/back_jiantou" -->
+
+                <!--<com.connxun.ttdj.widget.AppTitle-->
+                    <!--style="@style/title_style"-->
+                    <!--app:canFinish="true"-->
+                    <!--app:showBack="true"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/transparent" />-->
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/item_center" />
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

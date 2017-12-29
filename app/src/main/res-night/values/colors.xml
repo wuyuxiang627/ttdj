@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary_night">#ff2e2e2e</color>
+    <color name="colorPrimaryDark_night">#aaa</color>
+    <color name="colorAccent_night">#dfffffff</color>
+
+    <color name="defult_bg_night">#aaa</color>
+    <color name="tab_bg_night">#aaa</color>
+    <color name="tab_select_night">#aaa</color>
+    <color name="text_orange_night">#aaa</color>
+    <color name="devider_orange_night">#aaa</color>
+    <color name="app_color_night">#aaa</color>
+    <color name="title_normal_night">#aaa</color>
+    <color name="title_selected_night">#aaa</color>
+    <color name="text_red_night">#aaa</color>
+    <color name="text_black_night">#aaa</color>
+    <color name="text_blue_night">#aaa</color>
+    <color name="text_green_night">#aaa</color>
+    <color name="text_hint_night">#aaa</color>
+    <color name="radio_check_night">#aaa</color>
+    <color name="button_gray_night">#aaa</color>
+    <color name="deivde_rect_night">#aaa</color>
+    <color name="divider_recycle_night">#aaa</color>
+
+    <color name="checking_night">#aaa</color>
+    <color name="nocheck_night">#aaa</color>
+    <color name="white_night">#aaa</color>
+    <color name="black_night">#aaa</color>
+    <color name="transparent_night">#00000000</color>
+    <color name="transo_night">#aaa</color>
+    <color name="text_dark_night">#aaa</color>
+    <color name="default_color_night">#aaa</color>
+    <color name="edit_hint_text_night">#aaa</color>
+    <color name="grid_itemdecoration_night">#aaa</color>
+    <color name="swipe_color_night">#aaa</color>
+    <color name="divider_color_night">#aaa</color>
+
+</resources>

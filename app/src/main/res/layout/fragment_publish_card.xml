@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:windowSoftInputMode="adjustPan">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.connxun.ttdj.widget.AppTitle
+            style="@style/title_style"
+            app:centreText="发布促销"
+            app:centreTextColor="@color/white"
+            app:rightText="重写"
+            app:rightTextColor="@color/white"
+            app:rightTextSize="@dimen/sp_16" />
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/publish_name"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_rect_blue_stroke_corner"
+                        android:hint="@string/publish_card_name"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="服务"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_rect_blue_stroke_corner">
+
+                            <org.angmarch.views.NiceSpinner
+                                android:id="@+id/nice_spinner"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_rect_blue_stroke_corner"
+                                android:hint="居家服务"
+                                android:maxLines="1"
+                                android:textColor="@color/text_hint" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_rect_blue_stroke_corner">
+
+                            <org.angmarch.views.NiceSpinner
+                                android:id="@+id/nice_spinner2"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:hint="家政服务"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/text_hint" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <EditText
+                        android:id="@+id/et_service_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_rect_blue_stroke_corner"
+                        android:gravity="left|top"
+                        android:hint="经营范围"
+                        android:inputType="textMultiLine"
+                        android:minLines="4"
+                        android:padding="10dp"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="15dp"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="地址"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_province"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_rect_blue_stroke_corner"
+                        android:hint="省、市、县"
+                        android:padding="5dp"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <EditText
+                        android:id="@+id/et_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_rect_blue_stroke_corner"
+                        android:hint="详细地址"
+                        android:padding="5dp"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="添加图片"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/sp_16" />
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="(选填)"
+                            android:textColor="@color/text_hint"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="(最多可添加6张)"
+                            android:textColor="@color/text_red"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+                    <com.connxun.ttdj.widget.ScrollGridView
+                        android:id="@+id/activity_postmessage_gridview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:horizontalSpacing="1dp"
+                        android:listSelector="@color/transparent"
+                        android:numColumns="4"
+                        android:padding="5dp"
+                        android:scrollbars="none"
+                        android:verticalSpacing="1dp" />
+                </LinearLayout>
+
+                <include layout="@layout/item_publish_price_layout" />
+
+                <include layout="@layout/item_publish_no_login_auth_layout" />
+
+                <CheckBox
+                    android:id="@+id/rb_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:buttonTint="@drawable/radio_group_selector"
+                    android:checked="true"
+                    android:text="@string/read_provision" />
+
+                <Button
+                    android:id="@+id/tv_publish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_blue_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/publish_card"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/tv_certification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_orange_shape"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/go_certification"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
