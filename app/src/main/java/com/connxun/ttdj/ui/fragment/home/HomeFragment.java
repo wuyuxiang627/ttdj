@@ -25,12 +25,14 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.connxun.ttdj.MyApplication;
 import com.connxun.ttdj.R;
 import com.connxun.ttdj.constants.Constants;
 import com.connxun.ttdj.di.component.FragmentComponent;
 import com.connxun.ttdj.entity.Carousel;
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.PCard;
+import com.connxun.ttdj.ui.releaseDemand.ReleaseDemandActivity;
 import com.connxun.ttdj.ui.adapter.MyViewPagerAdapter;
 import com.connxun.ttdj.ui.adapter.home.GridViewAdapter;
 import com.connxun.ttdj.ui.adapter.home.HomeHotAdapter;
@@ -70,6 +72,9 @@ public class HomeFragment extends BaseFragmentV4 implements
     @BindView(R.id.tv_search)
     TextView tvSearch;
 
+    @BindView(R.id.fabquxiu)
+    ImageView fabquxiu;
+
     @BindView(R.id.banner)
     Banner banner;
     @BindView(R.id.rv_list)
@@ -81,6 +86,8 @@ public class HomeFragment extends BaseFragmentV4 implements
     ViewPager viewpager;
     @BindView(R.id.points)
     LinearLayout points;
+
+
 
     /* 城市定位选择 */
     private static final int REQUEST_CODE_PICK_CITY = 0;
@@ -373,6 +380,14 @@ public class HomeFragment extends BaseFragmentV4 implements
 
 
     }
+
+    @OnClick(R.id.fabquxiu)
+    public void onClick(View view){
+//        ToastUtils.showShort("点击了发布需求");
+
+        startActivity(new Intent(MyApplication.getContext(), ReleaseDemandActivity.class));
+    }
+
 
     //重写onActivityResult方法
     @Override

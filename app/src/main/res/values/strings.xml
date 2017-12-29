@@ -99,4 +99,8 @@
     <string name="error_data">网络错误,点击重试</string>
     <string name="error_gif">x or y bound size should be at least %1$dpx and file size should be no more than %2$sM</string>
 
+    <!--发布需求-->
+    <string name="release_demand_title">发布需求</string>
+
+
 </resources>

@@ -67,6 +67,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.releaseDemand.ReleaseDemandActivity"/>
+
         <activity
             android:name="com.connxun.ttdj.ui.main.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />

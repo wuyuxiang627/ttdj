@@ -6,6 +6,7 @@ import com.connxun.ttdj.di.PerActivity;
 import com.connxun.ttdj.di.module.ActivityModule;
 import com.connxun.ttdj.ui.login.LoginActivity;
 import com.connxun.ttdj.ui.register.RegisterActivity;
+import com.connxun.ttdj.ui.releaseDemand.ReleaseDemandActivity;
 import com.connxun.ttdj.ui.splash.SplashActivity;
 
 import dagger.Component;
@@ -32,6 +33,8 @@ public interface ActivityComponent {
     void inject(LoginActivity activity);
 
     void inject(RegisterActivity activity);
+
+    void inject(ReleaseDemandActivity activity);
 
 //    void inject(AboutActivity aboutActivity);
 //
