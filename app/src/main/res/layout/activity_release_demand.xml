@@ -11,6 +11,7 @@
         android:id="@+id/rl_release_demand_title"
         android:layout_width="match_parent"
         android:layout_height="52dp"
+
         android:background="@color/colorPrimary"
         >
         <ImageView
