@@ -32,6 +32,7 @@ import com.connxun.ttdj.di.component.FragmentComponent;
 import com.connxun.ttdj.entity.Carousel;
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.PCard;
+import com.connxun.ttdj.ui.allClassification.AllClassificationActivity;
 import com.connxun.ttdj.ui.releaseDemand.ReleaseDemandActivity;
 import com.connxun.ttdj.ui.adapter.MyViewPagerAdapter;
 import com.connxun.ttdj.ui.adapter.home.GridViewAdapter;
@@ -387,6 +388,12 @@ public class HomeFragment extends BaseFragmentV4 implements
 
         startActivity(new Intent(MyApplication.getContext(), ReleaseDemandActivity.class));
     }
+
+    @OnClick(R.id.iv_all_classily)
+    public void onClickClassily(View view){
+        startActivity(new Intent(MyApplication.getContext(), AllClassificationActivity.class));
+    }
+
 
 
     //重写onActivityResult方法

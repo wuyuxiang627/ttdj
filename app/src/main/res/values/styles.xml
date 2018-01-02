@@ -51,4 +51,10 @@
         <item name="android:layout_height">@dimen/item_height</item>
         <item name="android:background">@drawable/view_defulte_color</item>
     </style>
+
+    <!--导航栏的字体大小-->
+    <style name="TabLayoutTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

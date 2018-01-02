@@ -101,6 +101,8 @@
 
     <!--发布需求-->
     <string name="release_demand_title">发布需求</string>
+    <!--全部分类-->
+    <string name="all_classification">全部分类</string>
 
 
 </resources>

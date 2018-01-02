@@ -36,4 +36,8 @@
     <color name="grid_itemdecoration">#267cbe</color>
     <color name="swipe_color">#A6D1B6</color>
     <color name="divider_color">#a6a6a6</color>
+
+    <color name="check_true">#ff7602</color>
+    <color name="check_false">#a2a2a3</color>
+    <color name="find_msg">#666666</color>
 </resources>
