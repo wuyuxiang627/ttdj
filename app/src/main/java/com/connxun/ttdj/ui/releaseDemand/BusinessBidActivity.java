@@ -16,7 +16,8 @@ import com.connxun.ttdj.ui.base.BaseSwipeBackActivity;
 public class BusinessBidActivity extends BaseSwipeBackActivity {
 
     @Override
-    public int bindLayout() {
+    public int bindLayout()
+    {
         return 0;
     }
 

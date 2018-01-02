@@ -59,6 +59,7 @@ public class ReleaseDemandActivity  extends BaseSwipeBackActivity implements Pub
     private static final int REQUEST_CODE_PICK_CITY = 0;
 
 
+
     @Override
     public int bindLayout() {
         return R.layout.activity_release_demand;
