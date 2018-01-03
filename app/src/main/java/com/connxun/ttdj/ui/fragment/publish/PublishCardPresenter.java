@@ -2,6 +2,7 @@ package com.connxun.ttdj.ui.fragment.publish;
 
 import com.connxun.ttdj.api.AppApi;
 import com.connxun.ttdj.di.PerActivity;
+import com.connxun.ttdj.entity.PublishCardEntity;
 import com.connxun.ttdj.ui.base.BasePresenter;
 
 import javax.inject.Inject;
@@ -32,6 +33,12 @@ public class PublishCardPresenter extends BasePresenter<PublishCardContract.Home
     @Override
     public void getCategorySubList(String id) {
         mDisposable.add(api.getCarouseMenuSub(id).subscribe(categorySubs -> mView.showCategoryMenuSubList(categorySubs),
+                throwable -> mView.onError(throwable.getMessage())));
+    }
+
+    @Override
+    public void putPublishCard(PublishCardEntity publishCardEntity) {
+        mDisposable.add(api.putPublishCard(publishCardEntity).subscribe(categorySubs -> mView.showPublistCardText(categorySubs),
                 throwable -> mView.onError(throwable.getMessage())));
     }
 

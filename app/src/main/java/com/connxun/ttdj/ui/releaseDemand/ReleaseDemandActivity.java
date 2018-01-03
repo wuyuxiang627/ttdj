@@ -178,6 +178,11 @@ public class ReleaseDemandActivity  extends BaseSwipeBackActivity implements Pub
     }
 
     @Override
+    public void showPublistCardText(String text) {
+
+    }
+
+    @Override
     public void onValidationSucceeded() {
 
     }

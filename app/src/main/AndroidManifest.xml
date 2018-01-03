@@ -94,6 +94,7 @@
 
         <activity android:name="com.connxun.ttdj.ui.center.SettingActivity"/>
         <activity android:name=".ui.allClassification.AllClassificationActivity"/>
+        <activity android:name=".ui.competitive.CompetitiveActivity"/>
         <!--<activity-->
         <!--android:name=".ui.classdetail.ClassDetailActivity"-->
         <!--android:configChanges="orientation|screenSize|keyboardHidden"-->

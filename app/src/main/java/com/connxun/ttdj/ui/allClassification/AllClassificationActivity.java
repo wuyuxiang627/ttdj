@@ -82,6 +82,11 @@ public class AllClassificationActivity extends BaseSwipeBackActivity implements 
 
     }
 
+    @Override
+    public void showPublistCardText(String text) {
+
+    }
+
 //    @Override
 //    public void showublishCard(String successs) {
 //

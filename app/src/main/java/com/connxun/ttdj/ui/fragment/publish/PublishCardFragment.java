@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,20 +15,31 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blankj.utilcode.util.CacheUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.connxun.ttdj.R;
+import com.connxun.ttdj.api.AppApiService;
+import com.connxun.ttdj.constants.Constants;
 import com.connxun.ttdj.di.component.FragmentComponent;
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
+import com.connxun.ttdj.entity.FileEntitiy;
 import com.connxun.ttdj.entity.PostMessageImageItem;
+import com.connxun.ttdj.entity.PublishCardEntity;
+import com.connxun.ttdj.entity.PublishCardResponse;
 import com.connxun.ttdj.ui.adapter.publish.PostPicGridViewAdapter;
+import com.connxun.ttdj.ui.adapter.releaseDemand.ReaseDemandAdapter;
+import com.connxun.ttdj.ui.adapter.releaseDemand.ReaseDemandCategorySubAdapter;
 import com.connxun.ttdj.ui.base.BaseFragmentV4;
 import com.connxun.ttdj.utils.AddressPickTask;
 import com.connxun.ttdj.utils.GifSizeFilter;
+import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
@@ -36,10 +48,15 @@ import com.zhihu.matisse.filter.Filter;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
 import org.angmarch.views.NiceSpinner;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -48,6 +65,17 @@ import butterknife.OnClick;
 import cn.qqtheme.framework.entity.City;
 import cn.qqtheme.framework.entity.County;
 import cn.qqtheme.framework.entity.Province;
+import io.reactivex.Observable;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
@@ -68,9 +96,9 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     @BindView(R.id.et_name)
     EditText etName;
     @BindView(R.id.nice_spinner)
-    NiceSpinner niceSpinner;
+    Spinner niceSpinner;
     @BindView(R.id.nice_spinner2)
-    NiceSpinner niceSpinner2;
+    Spinner niceSpinner2;
     @BindView(R.id.et_service_range)
     EditText etServiceRange;
     @BindView(R.id.tv_province)
@@ -116,6 +144,10 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     @BindView(R.id.tv_certification)
     Button tvCertification;
 
+    PublishCardEntity  publishCard;//发布名片请求实体
+
+    List<File> fileList; //选择照片的文件集合
+
     //选择图片gridAdapter
     private PostPicGridViewAdapter gridadapter;
     //发帖图片实体LIST
@@ -145,8 +177,9 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     @Override
     public void initView(View view) {
         presenter.attachView(this);
-
+        publishCard = new PublishCardEntity();
         gridViewData = new ArrayList<>();
+        fileList =  new ArrayList<>();
         gridadapter = new PostPicGridViewAdapter(this.getContext(), gridViewData);
         activityPostmessageGridview.setAdapter(gridadapter);
         activityPostmessageGridview.setOnItemClickListener(this);
@@ -173,13 +206,13 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
         getComponent(FragmentComponent.class).inject(this);
     }
 
-    @OnClick({R.id.app_bar_right_tv, R.id.tv_province})
+    @OnClick({R.id.app_bar_right_tv, R.id.tv_province,R.id.tv_publish,R.id.rb_price,
+            R.id.rb_range,R.id.rb_agree,R.id.et_price,R.id.et_low,R.id.et_above})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.app_bar_right_tv: //重写
                 ToastUtils.showShort("点击了右上角按钮");
-
                 gridadapter.notifyDataSetChanged();
                 break;
             case R.id.tv_province:  //地址选择
@@ -200,8 +233,11 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                         } else {
                             ToastUtils.showShort(province.getAreaName() + city.getAreaName() + county.getAreaName());
                             tvProvince.setText(province.getAreaName() + city.getAreaName() + county.getAreaName());
-                        }
+                            publishCard.setPname(province.getAreaName());//设置省
+                            publishCard.setCname(city.getAreaName());//设置市
+                            publishCard.setCouname(county.getAreaName()); //设置县
 
+                        }
                     }
                 });
 //                task.execute("贵州", "毕节", "纳雍");
@@ -211,7 +247,124 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                 ToastUtils.showShort("点击了activity_postmessage_gridview");
 
                 break;
+            case R.id.rb_price:
+                etPrice.setCursorVisible(true);
+                rbAgree.setChecked(false);
+                rbRange.setChecked(false);
+                etAbove.setCursorVisible(false);
+                etLow.setCursorVisible(false);
+                break;
+            case R.id.rb_range:
+                etPrice.setCursorVisible(false);
+                etLow.setCursorVisible(true);
+                etAbove.setCursorVisible(true);
+                rbAgree.setChecked(false);
+                rbPrice.setChecked(false);
+                break;
+            case R.id.rb_agree:
+                etPrice.setCursorVisible(false);
+                etAbove.setCursorVisible(false);
+                etLow.setCursorVisible(false);
+                rbRange.setChecked(false);
+                rbPrice.setChecked(false);
+                break;
+            case R.id.et_price:
+                rbPrice.setChecked(true);
+                rbAgree.setChecked(false);
+                rbRange.setChecked(false);
+                break;
+            case R.id.et_low:
+            case R.id.et_above:
+                rbPrice.setChecked(false);
+                rbAgree.setChecked(false);
+                rbRange.setChecked(true);
+                break;
+            case R.id.tv_publish:
+                //1.上传文件
+                if(fileList != null && fileList.size() != 0){
+                    putFile();
+                }else{
+                    ToastUtils.showShort("请选择照片文件");
+                    return;
+                }
+
+                //2.得到文件地址上传参数
+                presenter.putPublishCard(getPublishCard());
+
+                break;
         }
+    }
+
+    //上传文件
+    private void putFile() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(Constants.BASE_URL)
+                .build();
+        AppApiService service = retrofit.create(AppApiService.class);
+        RequestBody requestBody3 = RequestBody.create(MediaType.parse(""), "123456");
+        Map<String, RequestBody> params = new HashMap<>();
+        params.put("file_type", requestBody3);
+        for(int i = 0; i<fileList.size();i++){
+            File file = fileList.get(i);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            params.put("file\"; filename=\""+ file.getName(), requestBody);
+        }
+        Call<ResponseBody> model = service.uploadFile(params);
+        model.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                try {
+                    String s = new String(response.body().bytes());
+                    Gson gson = new Gson();
+                    FileEntitiy fileEntitiy = gson.fromJson(s,FileEntitiy.class);
+                    publishCard.setPic(fileEntitiy.getCreateFilePath()); //设置图片路径
+                    fileList.clear();//清空数据
+                    //发送参数
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("错误信息：",t.getMessage());
+            }
+        });
+
+    }
+
+    //获取实体类对象
+    public PublishCardEntity getPublishCard(){
+
+        if(!etName.getText().toString().equals("")&&
+                !tvProvince.getText().toString() .equals("")&&
+                !etAddress.getText().toString() .equals("") &&
+                !tvProvince.getText().toString() .equals("")&&
+                !publishCard.getCardid().equals("")&&
+                !publishCard.getCategoryid().equals("")
+                ){
+            publishCard.setName(etName.getText().toString());//名字
+            publishCard.setContent(etServiceRange.getText().toString()); //经营范围
+            publishCard.setAddr(etAddress.getText().toString());//具体地址
+            if(rbPrice.isChecked()&&!etPrice.getText().toString() .equals("")){
+                publishCard.setPrice(Integer.parseInt(etPrice.getText().toString())); //设置固定价钱
+                publishCard.setIsagree("1");//设置不商定
+            }else if(rbRange.isChecked()&&!etLow.getText().toString() .equals("")&&!etAbove.getText().toString() .equals("")){
+                publishCard.setPricemax(Integer.parseInt(etAbove.getText().toString()));//设置最多价钱
+                publishCard.setPricemin(Integer.parseInt(etLow.getText().toString()));//设置最少价钱
+                publishCard.setIsagree("1");//设置不商定
+            }else if(rbAgree.isChecked()){
+                publishCard.setIsagree("0"); //设置商定
+            }else {
+                ToastUtils.showLong("请输入必要参数");
+            }
+        }else {
+            ToastUtils.showShort("请输入必要参数!!");
+        }
+        return publishCard;
     }
 
     @Override
@@ -234,13 +387,22 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
         mOperation.showBasicDialog(error);
     }
 
+    /**
+     * 一级菜单获取成功
+     * @param carouseMenus
+     */
     @Override
     public void showCategoryMenuList(List<CategoryMenu> carouseMenus) {
-        niceSpinner.attachDataSource(carouseMenus);
-        presenter.getCategorySubList(carouseMenus.get(0).getCategoryid());
+        // 建立Adapter绑定数据源
+        ReaseDemandAdapter adapter = new ReaseDemandAdapter(getActivity(), carouseMenus);
+        // 绑定Adapter
+        niceSpinner.setAdapter(adapter);
+//        niceSpinner.attachDataSource(carouseMenus);
+//        presenter.getCategorySubList(carouseMenus.get(0).getCategoryid());
         niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                publishCard.setCardid(carouseMenus.get(position).getCategoryid()); //设置名片id
                 presenter.getCategorySubList(carouseMenus.get(position).getCategoryid());
                 ToastUtils.showShort(carouseMenus.get(position).getCategoryid() + "");
             }
@@ -252,12 +414,19 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
         });
     }
 
+    /**
+     * 二级菜单获取成功
+     * @param carouseMenus
+     */
     @Override
     public void showCategoryMenuSubList(List<CategorySub> carouseMenus) {
-        niceSpinner2.attachDataSource(carouseMenus);
+        ReaseDemandCategorySubAdapter adapter = new ReaseDemandCategorySubAdapter(getActivity(), carouseMenus);
+        // 绑定Adapter
+        niceSpinner2.setAdapter(adapter);
         niceSpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                publishCard.setCategoryid(carouseMenus.get(position).getCategoryid()); //设置二级分类id
                 ToastUtils.showShort(carouseMenus.get(position).getCategoryid() + "");
 
             }
@@ -267,6 +436,15 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
 
             }
         });
+    }
+
+    /**
+     * 发布名片成功
+     * @param publishCardResponse
+     */
+    @Override
+    public void showPublistCardText(PublishCardResponse publishCardResponse) {
+        mOperation.showBasicDialog("发布成功");
     }
 
 
@@ -317,8 +495,6 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                     }
                 });
             }
-
-
         }
     }
 
@@ -337,6 +513,13 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
 
                     @Override
                     public void onSuccess(File file) {
+                        //将选择的文件放入集合中
+                        if(fileList != null){
+                            fileList.add(file);
+                        }else {
+                            fileList = new ArrayList<>();
+                            fileList.add(file);
+                        }
 //                        compressPicList.add(file);
                         LogUtils.e("当前图片信息：" + file.getPath() + "当前图片大小：" + file.length());
                         LogUtils.e("要加载的图片路径：" + file.getAbsolutePath());

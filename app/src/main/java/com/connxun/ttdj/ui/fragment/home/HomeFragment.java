@@ -33,6 +33,7 @@ import com.connxun.ttdj.entity.Carousel;
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.PCard;
 import com.connxun.ttdj.ui.allClassification.AllClassificationActivity;
+import com.connxun.ttdj.ui.competitive.CompetitiveActivity;
 import com.connxun.ttdj.ui.releaseDemand.ReleaseDemandActivity;
 import com.connxun.ttdj.ui.adapter.MyViewPagerAdapter;
 import com.connxun.ttdj.ui.adapter.home.GridViewAdapter;
@@ -368,7 +369,7 @@ public class HomeFragment extends BaseFragmentV4 implements
         isLast=pCard.isLast();
     }
 
-    @OnClick({R.id.tv_city})
+    @OnClick({R.id.tv_city,R.id.iv_competitive,R.id.fabquxiu,R.id.iv_all_classily})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -377,22 +378,31 @@ public class HomeFragment extends BaseFragmentV4 implements
                 startActivityForResult(new Intent(this.mContext, com.zaaach.citypicker.CityPickerActivity.class),
                         REQUEST_CODE_PICK_CITY);
                 break;
+            case R.id.iv_competitive:
+                startActivity(new Intent(MyApplication.getContext(), CompetitiveActivity.class));
+                break;
+            case R.id.fabquxiu:
+                startActivity(new Intent(MyApplication.getContext(), ReleaseDemandActivity.class));
+                break;
+            case R.id.iv_all_classily:
+                startActivity(new Intent(MyApplication.getContext(), AllClassificationActivity.class));
+                break;
         }
 
 
     }
 
-    @OnClick(R.id.fabquxiu)
-    public void onClick(View view){
-//        ToastUtils.showShort("点击了发布需求");
-
-        startActivity(new Intent(MyApplication.getContext(), ReleaseDemandActivity.class));
-    }
-
-    @OnClick(R.id.iv_all_classily)
-    public void onClickClassily(View view){
-        startActivity(new Intent(MyApplication.getContext(), AllClassificationActivity.class));
-    }
+//    @OnClick(R.id.fabquxiu)
+//    public void onClick(View view){
+////        ToastUtils.showShort("点击了发布需求");
+//
+//        startActivity(new Intent(MyApplication.getContext(), ReleaseDemandActivity.class));
+//    }
+//
+//    @OnClick(R.id.iv_all_classily)
+//    public void onClickClassily(View view){
+//        startActivity(new Intent(MyApplication.getContext(), AllClassificationActivity.class));
+//    }
 
 
 

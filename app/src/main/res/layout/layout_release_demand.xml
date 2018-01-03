@@ -251,6 +251,7 @@
                         android:layout_weight="1"
                         android:hint="居家服务"
                         android:textSize="5sp"
+                        android:paddingLeft="8dp"
                         android:entries="@array/languages"
                         android:spinnerMode="dropdown"
                         android:textColor="#333"></Spinner>

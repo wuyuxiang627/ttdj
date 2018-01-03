@@ -3,6 +3,8 @@ package com.connxun.ttdj.ui.fragment.publish;
 
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
+import com.connxun.ttdj.entity.PublishCardEntity;
+import com.connxun.ttdj.entity.PublishCardResponse;
 import com.connxun.ttdj.ui.base.BasePView;
 
 import java.util.List;
@@ -16,11 +18,16 @@ public interface PublishCardContract {
 
         void showCategoryMenuList(List<CategoryMenu> carouseMenus);
         void showCategoryMenuSubList(List<CategorySub> carouseMenus);
+        void showPublistCardText(PublishCardResponse publishCardResponse);
 
     }
 
     interface PublishCardPresenter {
         void getCategoryList();
         void getCategorySubList(String id);
+        void putPublishCard(PublishCardEntity publishCardEntity);
+
+
+
     }
 }

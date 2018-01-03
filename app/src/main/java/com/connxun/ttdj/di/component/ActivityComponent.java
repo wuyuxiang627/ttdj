@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.connxun.ttdj.di.PerActivity;
 import com.connxun.ttdj.di.module.ActivityModule;
 import com.connxun.ttdj.ui.allClassification.AllClassificationActivity;
+import com.connxun.ttdj.ui.competitive.CompetitiveActivity;
 import com.connxun.ttdj.ui.login.LoginActivity;
 import com.connxun.ttdj.ui.register.RegisterActivity;
 import com.connxun.ttdj.ui.releaseDemand.ReleaseDemandActivity;
@@ -39,7 +40,7 @@ public interface ActivityComponent {
 
     void inject(AllClassificationActivity activity);
 //
-//    void inject(HelpActivity aboutActivity);
+    void inject(CompetitiveActivity activity);
 //
 //    void inject(HomeSearchActivity activity);
 //

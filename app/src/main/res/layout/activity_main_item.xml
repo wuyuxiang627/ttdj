@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    
+    <RelativeLayout
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="112dp">
+        
+        <ImageView
+            android:id="@+id/iv_item_competitive_photo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@mipmap/center_touxiang"
+            android:layout_margin="15dp"
+            />
+        <TextView
+            android:id="@+id/tv_name_text"
+             android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/iv_item_competitive_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="需求名称:"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_name_text"
+            android:layout_toRightOf="@+id/tv_name_text"
+            android:layout_marginLeft="5dp"
+            android:text="这是啥:名字啊"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_type_text"
+            android:layout_alignRight="@+id/tv_name_text"
+            android:layout_below="@+id/tv_name_text"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="需求分类:"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_type_text"
+            android:layout_toRightOf="@+id/tv_type_text"
+            android:layout_marginLeft="5dp"
+            android:text="这是啥:类别啊"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_price"
+            android:layout_alignRight="@+id/tv_name_text"
+            android:layout_below="@+id/tv_type_text"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="报价:"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            />
+        <TextView
+            android:id="@+id/tv_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_item_price"
+            android:layout_toRightOf="@+id/tv_item_price"
+            android:layout_marginLeft="5dp"
+            android:text="￥"
+            android:textColor="#FF6600"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/tv_item_price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_item_icon"
+            android:layout_toRightOf="@+id/tv_item_icon"
+            android:text="425"
+            android:layout_marginTop="7dp"
+            android:textColor="#FF6600"
+            android:textSize="20sp"
+            />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd"
+            android:layout_alignLeft="@+id/tv_type_text"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            />
+
+        <RelativeLayout
+            android:layout_marginBottom="9dp"
+            android:layout_alignLeft="@+id/tv_type_text"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="12dp">
+            <TextView
+                android:layout_toRightOf="@+id/iv_item_browse"
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_item_browse"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="浏览:"
+                android:textSize="10sp"
+                android:layout_marginLeft="4dp"
+                android:textColor="#999999"
+                />
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_item_browse_number"
+                android:layout_marginRight="13dp"
+                android:layout_toRightOf="@+id/tv_item_browse"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1222"
+                android:textColor="#3DBE02"
+                android:textSize="10sp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_item_browse"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/icon_liulan"
+                android:layout_marginBottom="15dp"
+                />
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_item_addreess"
+                android:layout_marginRight="13dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="发布于北京"
+                android:textColor="#3DBE02"
+                android:textSize="10sp"
+                />
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="2017-02-23 11:25 "
+                android:textSize="10sp"
+                android:textColor="#7D7D7D"
+                android:layout_toLeftOf="@+id/tv_item_addreess"
+                />
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@"
+                android:textSize="10sp"
+                android:textColor="#7D7D7D"
+                android:layout_toLeftOf="@+id/tv_item_time"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="#F2F2F2"
+        />
+    
+
+</LinearLayout>

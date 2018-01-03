@@ -5,15 +5,26 @@ import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
 import com.connxun.ttdj.entity.PCard;
 import com.connxun.ttdj.entity.PUser;
+import com.connxun.ttdj.entity.PublishCardEntity;
+import com.connxun.ttdj.entity.PublishCardResponse;
 
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 
 /**
  * @Author anna
@@ -97,5 +108,22 @@ public interface AppApiService {
     Observable<PCard> getHotCard(@Field("page")int page,@Field("length")int length);
 
 
+    /**
+     * 上传文件
+     * @param params
+     * @return
+     */
+    @Multipart
+    @POST("common/uploads")
+    Call<ResponseBody> uploadFile(@PartMap Map<String, RequestBody> params );
+
+
+    /**
+     * 名片发布
+     *
+     */
+    @Headers({"Content-Type: application/json","Accept:  application/json"})
+    @POST("card/publishCard")
+    Observable<PublishCardResponse> putPublishCard(@Body PublishCardEntity publishCard);
 
 }

@@ -67,7 +67,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
@@ -81,47 +81,63 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginRight="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/shape_rect_blue_stroke_corner">
 
-                            <org.angmarch.views.NiceSpinner
+                            <!--<org.angmarch.views.NiceSpinner-->
+                                <!--android:id="@+id/nice_spinner"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:layout_margin="5dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:background="@drawable/shape_rect_blue_stroke_corner"-->
+                                <!--android:hint="居家服务"-->
+                                <!--android:maxLines="1"-->
+                                <!--android:textColor="@color/text_hint" />-->
+
+                            <Spinner
+                                android:background="@drawable/shape_rect_blue_stroke_corner"
                                 android:id="@+id/nice_spinner"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/shape_rect_blue_stroke_corner"
                                 android:hint="居家服务"
-                                android:maxLines="1"
-                                android:textColor="@color/text_hint" />
+                                android:textSize="5sp"
+                                android:spinnerMode="dropdown"
+                                android:paddingLeft="8dp"
+                                android:entries="@array/languages"
+                                android:textColor="#333"></Spinner>
+
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginLeft="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/shape_rect_blue_stroke_corner">
 
-                            <org.angmarch.views.NiceSpinner
+                            <Spinner
+                                android:background="@drawable/shape_rect_blue_stroke_corner"
                                 android:id="@+id/nice_spinner2"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:hint="家政服务"
-                                android:paddingBottom="10dp"
-                                android:paddingTop="10dp"
-                                android:textColor="@color/text_hint" />
+                                android:hint="居家服务"
+                                android:textSize="5sp"
+                                android:spinnerMode="dropdown"
+                                android:paddingLeft="8dp"
+                                android:entries="@array/languages"
+                                android:textColor="#333"></Spinner>
                         </LinearLayout>
 
                     </LinearLayout>

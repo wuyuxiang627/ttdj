@@ -6,6 +6,8 @@ import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
 import com.connxun.ttdj.entity.PCard;
 import com.connxun.ttdj.entity.PUser;
+import com.connxun.ttdj.entity.PublishCardEntity;
+import com.connxun.ttdj.entity.PublishCardResponse;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.List;
@@ -17,7 +19,11 @@ import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.FieldMap;
 
@@ -150,5 +156,47 @@ public class AppApi implements AppApiService {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    /**
+     * 上传文件
+     * @param params
+     * @return
+     */
+    @Override
+    public Call<ResponseBody> uploadFile(Map<String, RequestBody> params) {
+        return null;
+    }
 
+    /**
+     *
+     * @param publishCard
+     * @return
+     */
+    @Override
+    public Observable<PublishCardResponse> putPublishCard(PublishCardEntity publishCard) {
+         return service.putPublishCard(publishCard)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+//    @Override
+//    public Call<String> putFile(RequestBody description, MultipartBody.Part file) {
+//        return null;
+//    }
+
+//    @Override
+//    public Call<String> putFile(MultipartBody multipartBody) {
+//        return null;
+//    }
+
+//    /**
+//     * 名片发布上传文件
+//     * @param parts
+//     * @return
+//     */
+//    @Override
+//    public Observable<String> putFile(List<MultipartBody.Part> parts) {
+//        return service.putFile(parts)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread());
+//    }
 }
