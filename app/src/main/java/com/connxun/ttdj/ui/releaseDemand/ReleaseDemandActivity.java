@@ -19,6 +19,7 @@ import com.connxun.ttdj.R;
 import com.connxun.ttdj.api.AppApi;
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
+import com.connxun.ttdj.entity.PublishCardResponse;
 import com.connxun.ttdj.ui.adapter.releaseDemand.ReaseDemandAdapter;
 import com.connxun.ttdj.ui.adapter.releaseDemand.ReaseDemandCategorySubAdapter;
 import com.connxun.ttdj.ui.base.BaseSwipeBackActivity;
@@ -178,9 +179,11 @@ public class ReleaseDemandActivity  extends BaseSwipeBackActivity implements Pub
     }
 
     @Override
-    public void showPublistCardText(String text) {
+    public void showPublistCardText(PublishCardResponse publishCardResponse) {
 
     }
+
+
 
     @Override
     public void onValidationSucceeded() {

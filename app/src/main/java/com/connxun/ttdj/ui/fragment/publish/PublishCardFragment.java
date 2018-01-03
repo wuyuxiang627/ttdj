@@ -233,6 +233,9 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                         } else {
                             ToastUtils.showShort(province.getAreaName() + city.getAreaName() + county.getAreaName());
                             tvProvince.setText(province.getAreaName() + city.getAreaName() + county.getAreaName());
+                            if(publishCard == null){
+                                publishCard = new PublishCardEntity();
+                            }
                             publishCard.setPname(province.getAreaName());//设置省
                             publishCard.setCname(city.getAreaName());//设置市
                             publishCard.setCouname(county.getAreaName()); //设置县
@@ -288,8 +291,7 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                     return;
                 }
 
-                //2.得到文件地址上传参数
-                presenter.putPublishCard(getPublishCard());
+
 
                 break;
         }
@@ -319,9 +321,14 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                     String s = new String(response.body().bytes());
                     Gson gson = new Gson();
                     FileEntitiy fileEntitiy = gson.fromJson(s,FileEntitiy.class);
+                    if(publishCard == null){
+                        publishCard = new PublishCardEntity();
+                    }
                     publishCard.setPic(fileEntitiy.getCreateFilePath()); //设置图片路径
                     fileList.clear();//清空数据
                     //发送参数
+                    //2.得到文件地址上传参数
+                    presenter.putPublishCard(getPublishCard());
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -339,13 +346,16 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     //获取实体类对象
     public PublishCardEntity getPublishCard(){
 
+        if(publishCard == null){
+            publishCard = new PublishCardEntity();
+        }
         if(!etName.getText().toString().equals("")&&
                 !tvProvince.getText().toString() .equals("")&&
                 !etAddress.getText().toString() .equals("") &&
                 !tvProvince.getText().toString() .equals("")&&
-                !publishCard.getCardid().equals("")&&
-                !publishCard.getCategoryid().equals("")
-                ){
+                publishCard.getCardid()!= null&&
+                publishCard.getCategoryid()!= null&&
+                publishCard.getPic() != null){
             publishCard.setName(etName.getText().toString());//名字
             publishCard.setContent(etServiceRange.getText().toString()); //经营范围
             publishCard.setAddr(etAddress.getText().toString());//具体地址
@@ -385,6 +395,7 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     @Override
     public void onError(String error) {
         mOperation.showBasicDialog(error);
+
     }
 
     /**
@@ -445,6 +456,16 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     @Override
     public void showPublistCardText(PublishCardResponse publishCardResponse) {
         mOperation.showBasicDialog("发布成功");
+        etName.setText("");
+        etAbove.setText("");
+        etLow.setText("");
+        etServiceRange.setText("");
+        etAddress.setText("");
+        etPrice.setText("");
+        gridViewData.clear();
+        fileList.clear();
+        gridadapter.notifyDataSetChanged();
+        publishCard = null;
     }
 
 

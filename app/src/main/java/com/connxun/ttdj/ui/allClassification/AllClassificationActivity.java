@@ -12,6 +12,7 @@ import com.connxun.ttdj.MyApplication;
 import com.connxun.ttdj.R;
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
+import com.connxun.ttdj.entity.PublishCardResponse;
 import com.connxun.ttdj.ui.adapter.allClassificatioin.MyAllClassificationAdapter;
 import com.connxun.ttdj.ui.base.BaseSwipeBackActivity;
 import com.connxun.ttdj.ui.fragment.publish.PublishCardContract;
@@ -83,14 +84,10 @@ public class AllClassificationActivity extends BaseSwipeBackActivity implements 
     }
 
     @Override
-    public void showPublistCardText(String text) {
+    public void showPublistCardText(PublishCardResponse publishCardResponse) {
 
     }
 
-//    @Override
-//    public void showublishCard(String successs) {
-//
-//    }
 
     @Override
     public int bindLayout() {
