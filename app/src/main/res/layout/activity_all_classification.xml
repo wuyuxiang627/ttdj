@@ -31,14 +31,16 @@
 
     </RelativeLayout>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tl_all_classification_title"
-        android:layout_width="80dp"
+    <ListView
+        android:id="@+id/lv_all_classification_listview"
+        android:layout_width="90dp"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/rl_all_classification_title"
-        app:tabIndicatorColor="@color/check_true"
-        app:tabTextAppearance="@style/TabLayoutTextStyle" />
+        android:divider="#333333"
+        android:dividerHeight="0.5dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"></ListView>
 
 
 </RelativeLayout>

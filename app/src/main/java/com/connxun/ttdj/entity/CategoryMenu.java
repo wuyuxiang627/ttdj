@@ -14,7 +14,17 @@ public class CategoryMenu implements Serializable {
     private String name;
     private String picurl;
     private String centerpicurl;
+    //是否选中
+    private boolean checked;
 
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
 
     public String getCategoryid() {
         return categoryid;
