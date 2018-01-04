@@ -10,13 +10,12 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.connxun.ttdj.MyApplication;
 import com.connxun.ttdj.R;
 import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
 import com.connxun.ttdj.entity.PublishCardResponse;
 import com.connxun.ttdj.ui.adapter.allClassificatioin.MyAllClassificationAdapter;
-import com.connxun.ttdj.ui.adapter.competitive.CompetitiveAdapter;
+import com.connxun.ttdj.ui.adapter.allClassificatioin.AllclassificationTwoAdapter;
 import com.connxun.ttdj.ui.base.BaseSwipeBackActivity;
 import com.connxun.ttdj.ui.fragment.publish.PublishCardContract;
 import com.connxun.ttdj.ui.fragment.publish.PublishCardPresenter;
@@ -72,6 +71,7 @@ public class AllClassificationActivity extends BaseSwipeBackActivity implements 
         MyAllClassificationAdapter myAllClassificationAdapter = new MyAllClassificationAdapter(this,carouseMenus);
         lvAllClassification.setAdapter(myAllClassificationAdapter);
         myAllClassificationAdapter.setSelectedPosition(0);
+        presenter.getCategorySubList(carouseMenus.get(0).getCategoryid());
         myAllClassificationAdapter.notifyDataSetChanged();
         lvAllClassification.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -86,7 +86,7 @@ public class AllClassificationActivity extends BaseSwipeBackActivity implements 
 
     @Override
     public void showCategoryMenuSubList(List<CategorySub> carouseMenus) {
-        CompetitiveAdapter competitiveAdapter = new CompetitiveAdapter(this,carouseMenus);
+        AllclassificationTwoAdapter competitiveAdapter = new AllclassificationTwoAdapter(this,carouseMenus);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         rlAllclassificationRecyclerview.setLayoutManager(gridLayoutManager);
         rlAllclassificationRecyclerview.setAdapter(competitiveAdapter);

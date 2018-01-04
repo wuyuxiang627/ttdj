@@ -1,8 +1,6 @@
-package com.connxun.ttdj.ui.adapter.competitive;
+package com.connxun.ttdj.ui.adapter.allClassificatioin;
 
 import android.content.Context;
-import android.support.v4.widget.ContentLoadingProgressBar;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,21 +14,20 @@ import com.connxun.ttdj.R;
 import com.connxun.ttdj.constants.Constants;
 import com.connxun.ttdj.entity.CategorySub;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by connxun-16 on 2018/1/3.
  */
 
-public class CompetitiveAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AllclassificationTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final static int TYPE_CONTENT=0;//正常内容
     private final static int TYPE_FOOTER=1;//加载View
     private  Context context;
 
     private List<CategorySub> listData;
 
-    public CompetitiveAdapter(Context context, List<CategorySub> listData){
+    public AllclassificationTwoAdapter(Context context, List<CategorySub> listData){
         this.context = context;
         this.listData = listData;
     }

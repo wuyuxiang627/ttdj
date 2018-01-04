@@ -16,6 +16,7 @@
             android:layout_height="29dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:background="@mipmap/center_touxiang"
             />
         <TextView
             android:layout_marginLeft="21dp"

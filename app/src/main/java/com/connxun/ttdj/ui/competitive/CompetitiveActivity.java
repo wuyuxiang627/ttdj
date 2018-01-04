@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.connxun.ttdj.R;
-import com.connxun.ttdj.ui.adapter.competitive.CompetitiveAdapter;
 import com.connxun.ttdj.ui.base.BaseActivity;
 import com.connxun.ttdj.ui.base.BaseSwipeBackActivity;
 import com.connxun.ttdj.utils.onLoadMoreListener;

@@ -51,34 +51,42 @@
         android:layout_toEndOf="@+id/lv_all_classification_listview"
         android:background="#e6e6e6" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_below="@+id/rl_all_classification_title"
+    <android.support.v4.widget.NestedScrollView
         android:layout_toEndOf="@+id/lv_all_classification_listview"
-        android:gravity="center_vertical"
-        android:paddingLeft="21dp"
-        android:text="服务类型"
-        android:textColor="#333333"
-        android:textSize="14sp"
-        android:id="@+id/textView" />
-
-    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#e6e6e6"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/rl_all_classification_title"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="21dp"
+                android:text="服务类型"
+                android:textColor="#333333"
+                android:textSize="14sp"
+                android:id="@+id/textView" />
 
-        android:layout_toEndOf="@+id/lv_all_classification_listview" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e6e6e6"
+                android:layout_below="@+id/textView"
+                />
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="1dp"
-        android:id="@+id/rl_all_classification_recyvlerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/lv_all_classification_listview" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="1dp"
+                android:id="@+id/rl_all_classification_recyvlerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/textView"
+                />
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
 
 
 
