@@ -159,6 +159,13 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     //请求回调码
     private static final int REQUEST_CODE_CHOOSE = 23;
 
+    String cardId ;//一级菜单id
+    String twoCarouseMenusID ; //二级菜单id
+
+    String pName; //省
+    String cName; //市
+    String couName; //县
+
 
     public static PublishCardFragment getInstance() {
         return new PublishCardFragment();
@@ -177,7 +184,6 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     @Override
     public void initView(View view) {
         presenter.attachView(this);
-        publishCard = new PublishCardEntity();
         gridViewData = new ArrayList<>();
         fileList =  new ArrayList<>();
         gridadapter = new PostPicGridViewAdapter(this.getContext(), gridViewData);
@@ -233,13 +239,10 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                         } else {
                             ToastUtils.showShort(province.getAreaName() + city.getAreaName() + county.getAreaName());
                             tvProvince.setText(province.getAreaName() + city.getAreaName() + county.getAreaName());
-                            if(publishCard == null){
-                                publishCard = new PublishCardEntity();
-                            }
-                            publishCard.setPname(province.getAreaName());//设置省
-                            publishCard.setCname(city.getAreaName());//设置市
-                            publishCard.setCouname(county.getAreaName()); //设置县
 
+                            pName = province.getAreaName();
+                            cName = city.getAreaName();
+                            couName = county.getAreaName();
                         }
                     }
                 });
@@ -284,13 +287,14 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                 break;
             case R.id.tv_publish:
                 //1.上传文件
-                if(fileList != null && fileList.size() != 0){
-                    putFile();
-                }else{
-                    ToastUtils.showShort("请选择照片文件");
-                    return;
+                if(getPublishCard()){
+                    if(fileList != null && fileList.size() != 0){
+                        putFile();
+                    }else{
+                        ToastUtils.showShort("请选择照片文件");
+                        return;
+                    }
                 }
-
 
 
                 break;
@@ -321,15 +325,13 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                     String s = new String(response.body().bytes());
                     Gson gson = new Gson();
                     FileEntitiy fileEntitiy = gson.fromJson(s,FileEntitiy.class);
-                    if(publishCard == null){
-                        publishCard = new PublishCardEntity();
-                    }
-                    publishCard.setPic(fileEntitiy.getCreateFilePath()); //设置图片路径
-                    fileList.clear();//清空数据
                     //发送参数
                     //2.得到文件地址上传参数
-                    presenter.putPublishCard(getPublishCard());
-
+                    if( publishCard != null){
+                        publishCard.setPic(fileEntitiy.getCreateFilePath()); //设置图片路径
+                        //发布名片
+                        presenter.putPublishCard(publishCard);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -344,37 +346,42 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
     }
 
     //获取实体类对象
-    public PublishCardEntity getPublishCard(){
-
-        if(publishCard == null){
-            publishCard = new PublishCardEntity();
-        }
-        if(!etName.getText().toString().equals("")&&
-                !tvProvince.getText().toString() .equals("")&&
-                !etAddress.getText().toString() .equals("") &&
-                !tvProvince.getText().toString() .equals("")&&
-                publishCard.getCardid()!= null&&
-                publishCard.getCategoryid()!= null&&
-                publishCard.getPic() != null){
+    public boolean getPublishCard( ){
+        publishCard = null;
+        publishCard = new PublishCardEntity();
+        if(!etName.getText().toString().equals("")&& //名称
+                !tvProvince.getText().toString() .equals("")&&//地址
+                !etAddress.getText().toString() .equals("")&& //详细地址
+                !etServiceRange.getText().toString().equals("")&&//经营范围
+                !cardId.equals("")&& !twoCarouseMenusID .equals("")){ //一级分类id和二级分类id
             publishCard.setName(etName.getText().toString());//名字
             publishCard.setContent(etServiceRange.getText().toString()); //经营范围
             publishCard.setAddr(etAddress.getText().toString());//具体地址
-            if(rbPrice.isChecked()&&!etPrice.getText().toString() .equals("")){
+
+            publishCard.setCname(cName); //设置市
+            publishCard.setPname(pName); //设置省
+            publishCard.setCouname(couName); //设置县
+            publishCard.setCardid(cardId); //一级id
+            publishCard.setCategoryid(twoCarouseMenusID); //二级id
+
+            if(rbPrice.isChecked()&&!etPrice.getText().toString() .equals("")){ //固定价格
                 publishCard.setPrice(Integer.parseInt(etPrice.getText().toString())); //设置固定价钱
                 publishCard.setIsagree("1");//设置不商定
-            }else if(rbRange.isChecked()&&!etLow.getText().toString() .equals("")&&!etAbove.getText().toString() .equals("")){
+            }else if(rbRange.isChecked()&&!etLow.getText().toString() .equals("")&&!etAbove.getText().toString() .equals("")){ //区间价格
                 publishCard.setPricemax(Integer.parseInt(etAbove.getText().toString()));//设置最多价钱
                 publishCard.setPricemin(Integer.parseInt(etLow.getText().toString()));//设置最少价钱
                 publishCard.setIsagree("1");//设置不商定
             }else if(rbAgree.isChecked()){
                 publishCard.setIsagree("0"); //设置商定
             }else {
-                ToastUtils.showLong("请输入必要参数");
+                ToastUtils.showLong("请输入必要参数!!");
+                return  false;
             }
+            return true;
         }else {
             ToastUtils.showShort("请输入必要参数!!");
+            return false;
         }
-        return publishCard;
     }
 
     @Override
@@ -413,7 +420,7 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
         niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                publishCard.setCardid(carouseMenus.get(position).getCategoryid()); //设置名片id
+                cardId = carouseMenus.get(position).getCategoryid();
                 presenter.getCategorySubList(carouseMenus.get(position).getCategoryid());
                 ToastUtils.showShort(carouseMenus.get(position).getCategoryid() + "");
             }
@@ -437,7 +444,7 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
         niceSpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                publishCard.setCategoryid(carouseMenus.get(position).getCategoryid()); //设置二级分类id
+                twoCarouseMenusID = carouseMenus.get(position).getCategoryid();
                 ToastUtils.showShort(carouseMenus.get(position).getCategoryid() + "");
 
             }
