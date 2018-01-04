@@ -326,6 +326,7 @@ public class PublishCardFragment extends BaseFragmentV4 implements PublishCardCo
                     Gson gson = new Gson();
                     FileEntitiy fileEntitiy = gson.fromJson(s,FileEntitiy.class);
                     //发送参数
+
                     //2.得到文件地址上传参数
                     if( publishCard != null){
                         publishCard.setPic(fileEntitiy.getCreateFilePath()); //设置图片路径
