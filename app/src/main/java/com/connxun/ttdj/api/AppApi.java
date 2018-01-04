@@ -138,6 +138,7 @@ public class AppApi implements AppApiService {
     @Override
     public Observable<List<CategorySub>> getCarouseMenuSub(String id) {
 
+
         return service.getCarouseMenuSub(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
