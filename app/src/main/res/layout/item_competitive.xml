@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="#E6E6E6"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="#fff"
+        android:layout_margin="0.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="49dp">
+        <ImageView
+            android:id="@+id/iv_item_competitive_iamge"
+            android:layout_marginRight="12.5dp"
+            android:layout_width="31dp"
+            android:layout_height="29dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+        <TextView
+            android:layout_marginLeft="21dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_item_competitive_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="理工"
+            android:textSize="13sp"
+            android:textColor="#494949"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

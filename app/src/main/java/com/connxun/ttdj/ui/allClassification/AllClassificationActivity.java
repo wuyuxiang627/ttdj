@@ -3,6 +3,7 @@ package com.connxun.ttdj.ui.allClassification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,7 @@ import com.connxun.ttdj.entity.CategoryMenu;
 import com.connxun.ttdj.entity.CategorySub;
 import com.connxun.ttdj.entity.PublishCardResponse;
 import com.connxun.ttdj.ui.adapter.allClassificatioin.MyAllClassificationAdapter;
+import com.connxun.ttdj.ui.adapter.competitive.CompetitiveAdapter;
 import com.connxun.ttdj.ui.base.BaseSwipeBackActivity;
 import com.connxun.ttdj.ui.fragment.publish.PublishCardContract;
 import com.connxun.ttdj.ui.fragment.publish.PublishCardPresenter;
@@ -84,7 +86,10 @@ public class AllClassificationActivity extends BaseSwipeBackActivity implements 
 
     @Override
     public void showCategoryMenuSubList(List<CategorySub> carouseMenus) {
-
+        CompetitiveAdapter competitiveAdapter = new CompetitiveAdapter(this,carouseMenus);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
+        rlAllclassificationRecyclerview.setLayoutManager(gridLayoutManager);
+        rlAllclassificationRecyclerview.setAdapter(competitiveAdapter);
     }
 
     @Override
