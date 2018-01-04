@@ -3,6 +3,7 @@ package com.connxun.ttdj.ui.allClassification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -41,6 +42,9 @@ public class AllClassificationActivity extends BaseSwipeBackActivity implements 
 
     @BindView(R.id.iv_all_classification_finish)
     ImageView ivFinish; //销毁
+
+    @BindView(R.id.rl_all_classification_recyvlerView)
+    RecyclerView rlAllclassificationRecyclerview;
 
 
     @Inject
